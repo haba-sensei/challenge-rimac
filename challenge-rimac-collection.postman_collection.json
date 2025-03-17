@@ -1,0 +1,112 @@
+{
+	"info": {
+		"_postman_id": "a9347aeb-57af-4b54-b3e3-6b2dbbe2f3df",
+		"name": "challenge-rimac-collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37648144"
+	},
+	"item": [
+		{
+			"name": "http://localhost:4000/fusionados",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/fusionados",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"fusionados"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4000/historial?page=1&limit=5",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/historial?page=1&limit=5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"historial"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "limit",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4000/almacenar",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Orion Vex\",\r\n    \"height\": \"185\",\r\n    \"mass\": \"80\",\r\n    \"hair_color\": \"black\",\r\n    \"skin_color\": \"pale\",\r\n    \"eye_color\": \"green\",\r\n    \"birth_year\": \"32BBY\",\r\n    \"gender\": \"male\",\r\n    \"planet\": {\r\n        \"name\": \"Zephyria Prime\",\r\n        \"rotation_period\": \"28\",\r\n        \"orbital_period\": \"365\",\r\n        \"diameter\": \"12500\",\r\n        \"climate\": \"temperate\",\r\n        \"gravity\": \"1.1 standard\",\r\n        \"terrain\": \"mountains, forests\",\r\n        \"surface_water\": \"60\",\r\n        \"population\": \"500000000\",\r\n        \"city_name\": \"Nova Astra\",\r\n        \"city_region\": \"Northern Hemisphere\",\r\n        \"city_country\": \"Zephyria Federation\",\r\n        \"city_lat\": 45.1234,\r\n        \"city_lon\": -93.4567,\r\n        \"city_tz_id\": \"Zephyria Standard Time\",\r\n        \"city_temp_c\": 22,\r\n        \"city_temp_f\": 71.6,\r\n        \"city_humidity\": 55\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/almacenar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"almacenar"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

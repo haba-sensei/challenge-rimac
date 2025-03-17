@@ -1,0 +1,54 @@
+{
+	"ignorePatterns": [
+		"build/",
+		"dist/"
+	],
+	"overrides": [
+		{
+			"files": [
+				"src/**/*.ts",
+				"test/**/*.ts"
+			],
+			"parserOptions": {
+				"project": "./tsconfig.json"
+			}
+		},
+		{
+			"files": [
+				"**/*.js"
+			],
+			"parserOptions": {
+				"sourceType": "commonjs"
+			}
+		},
+		{
+			"files": [
+				"test/**/*.ts"
+			],
+			"plugins": [
+				"jest"
+			],
+			"extends": [
+				"plugin:jest/recommended"
+			],
+			"rules": {
+				"jest/prefer-expect-assertions": "off"
+			}
+		}
+	],
+	"parserOptions": {
+		"ecmaVersion": 2020
+	},
+	"env": {
+		"node": true
+	},
+	"extends": [
+		"eslint:recommended",
+		"plugin:@typescript-eslint/recommended",
+		"plugin:prettier/recommended"
+	],
+	"rules": {
+		"@typescript-eslint/no-explicit-any": "off",
+		"@typescript-eslint/no-duplicate-enum-values": "off"
+	}
+}

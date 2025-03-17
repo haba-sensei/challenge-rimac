@@ -1,0 +1,42 @@
+service: fn-challenge-rimac
+frameworkVersion: "3"
+
+plugins:
+  - serverless-esbuild
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  environment:
+    NODE_OPTIONS: "--enable-source-maps --inspect"
+    REGION: "us-east-1"
+    WEATHER_API_KEY: "01fecc4aa14848e89d1193127251603" # caduca en 30 dias debe cambiarse por otra
+    REDIS_HOST: "redis://localhost:6379"
+    MYSQL_HOST: "127.0.0.1"
+    MYSQL_DATABASE: "starwarsBD"
+    MYSQL_USER: "user"
+    MYSQL_PASSWORD: "password"
+    MYSQL_PORT: "3307"
+
+custom:
+  serverless-offline:
+    noPrependStageInUrl: true
+    httpPort: 4000
+    lambdaPort: 3003
+    useChildProcesses: true
+    printOutput: true
+  esbuild:
+    bundle: true
+    minify: true
+    sourcemap: false
+    target: esnext
+    keepNames: true
+    watch:
+      pattern: "src/**/*.ts"
+
+functions:
+  fn-challenge-rimac:
+    handler: src/index.handler
+    events:
+      - httpApi: "*"

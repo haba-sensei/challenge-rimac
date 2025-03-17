@@ -1,0 +1,189 @@
+openapi: 3.0.0
+info:
+  title: Star Wars API
+  description: API para gestionar personajes y planetas en Star Wars.
+  version: 1.0.0
+servers:
+  - url: http://localhost:4000
+    description: Servidor local
+
+paths:
+  /fusionados:
+    get:
+      summary: Fusionar datos
+      description: Fusiona datos de personas y planetas.
+      responses:
+        "201":
+          description: Datos fusionados correctamente
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Datos fusionados correctamente
+                  result:
+                    $ref: "#/components/schemas/CustomPeople"
+
+  /historial:
+    get:
+      summary: Obtener historial
+      description: Obtiene el historial de datos cronológico.
+      parameters:
+        - name: page
+          in: query
+          required: true
+          schema:
+            type: integer
+          example: 1
+        - name: limit
+          in: query
+          required: true
+          schema:
+            type: integer
+          example: 5
+      responses:
+        "200":
+          description: Historial de datos cronológico
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Historial de datos cronológico
+                  filters:
+                    type: object
+                    properties:
+                      page:
+                        type: string
+                        example: "1"
+                      limit:
+                        type: string
+                        example: "5"
+                  historial:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/CustomPeople"
+
+  /almacenar:
+    post:
+      summary: Almacenar datos
+      description: Guarda datos de una persona y su planeta.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CustomPeople"
+      responses:
+        "201":
+          description: Datos guardados correctamente
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Datos guardados correctamente
+                  customPeople:
+                    $ref: "#/components/schemas/CustomPeople"
+
+components:
+  schemas:
+    CustomPeople:
+      type: object
+      properties:
+        id:
+          type: string
+          example: 9zi__a3NwHsclBs63piMo
+        name:
+          type: string
+          example: Orion Vex
+        height:
+          type: string
+          example: "185"
+        mass:
+          type: string
+          example: "80"
+        hair_color:
+          type: string
+          example: black
+        skin_color:
+          type: string
+          example: pale
+        eye_color:
+          type: string
+          example: green
+        birth_year:
+          type: string
+          example: 32BBY
+        gender:
+          type: string
+          example: male
+        planet:
+          $ref: "#/components/schemas/Planet"
+
+    Planet:
+      type: object
+      properties:
+        id:
+          type: string
+          example: RuwSyagHMP771_b7Wik_q
+        name:
+          type: string
+          example: Zephyria Prime
+        rotation_period:
+          type: string
+          example: "28"
+        orbital_period:
+          type: string
+          example: "365"
+        diameter:
+          type: string
+          example: "12500"
+        climate:
+          type: string
+          example: temperate
+        gravity:
+          type: string
+          example: 1.1 standard
+        terrain:
+          type: string
+          example: mountains, forests
+        surface_water:
+          type: string
+          example: "60"
+        population:
+          type: string
+          example: "500000000"
+        city_name:
+          type: string
+          example: Nova Astra
+        city_region:
+          type: string
+          example: Northern Hemisphere
+        city_country:
+          type: string
+          example: Zephyria Federation
+        city_lat:
+          type: number
+          example: 45.1234
+        city_lon:
+          type: number
+          example: -93.4567
+        city_tz_id:
+          type: string
+          example: Zephyria Standard Time
+        city_temp_c:
+          type: number
+          example: 22
+        city_temp_f:
+          type: number
+          example: 71.6
+        city_humidity:
+          type: integer
+          example: 55
