@@ -67,7 +67,7 @@ Este reto consiste en desarrollar una API RESTful utilizando Node.js versión 20
        environment:
          NODE_OPTIONS: '--enable-source-maps --inspect'
          REGION: 'us-east-1'
-         WEATHER_API_KEY: '01fecc4aa14848e89d1193127251603'
+         WEATHER_API_KEY: '01fecc4aa14848e89d1193127251603' # esto caducara en poco tiempo
          REDIS_HOST: 'redis://localhost:6379'
          MYSQL_HOST: '127.0.0.1'
          MYSQL_DATABASE: 'starwarsBD'
